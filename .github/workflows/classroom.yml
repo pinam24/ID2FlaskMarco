@@ -21,9 +21,19 @@ jobs:
         setup-command: ''
         command: python3 -m unittest discover -s Tests
         timeout: 10
+    - name: Coverage report
+      id: coverage-report
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Coverage report
+        setup-command: python -m pip install --upgrade pip; pip install coverage
+        command: python3 -m coverage run --source ProductionCode -m unittest discover
+          Tests; python3 -m coverage report -m
+        timeout: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         RUN-TEST-SUITE_RESULTS: "${{steps.run-test-suite.outputs.result}}"
+        COVERAGE-REPORT_RESULTS: "${{steps.coverage-report.outputs.result}}"
       with:
-        runners: run-test-suite
+        runners: run-test-suite,coverage-report
