@@ -5,14 +5,13 @@ Our goals as a team include to work together towards a shared vision for our
 project, and learn how to navigate a shared codebase with Git and a database.
 
 ### Strengths
-- Cooper: Debugging, patient
-- Devin: Experience with HTML/CSS, open-minded
-- Marco: Data structures, patience
-- Joe: Data structures, patience
+- Cooper: I am patient and believe I am good at collaborating with others. I am strong at debugging through carefully looking at code as well as looking through documentation. I am also organized.
+- Devin: I’m open to listening to ideas in a team setting, and comfortable with leading discussion if need be. I’ve previously worked with large datasets in various formats and settings, and am fairly comfortable with web scraping as well. I also know my way around HTML and CSS and don’t mind spending the extra time to make software as user friendly as possible.
+- Marco: I am very open minded and a good listener. I like to provide ideas and some context when we find a block. I like receiving honest feedback and improving on my work. I am good with problem solving codes and finding the best or most efficient data structure when it comes to building a database.
+- Joe: Data structures, patience, flexibility: Have a basic understanding of many of the conceptual topics in data structures including coding practices that can be used effectively. In addition, can roll with the flow and adapt to whatever circumstances are thrown forward without too much difficulty. Can also wait and not become frustrated with problems as well as being able to work under pressure. Can handle stressful situations well without too much worry.
 
 ### Capitalizing on Strengths
-We will capitalize on our strengths by dividing and distributing tasks 
-(kanban), assigning roles if necessary.
+As one of our team goals is to learn, we decided that rotating roles is the best way for each team member to learn how to do each part.  If a team member is more familiar with a certain aspect of the project, they should not be the sole person responsible for it, but rather a resource for other team members to ask questions to if they are having difficulties. Additionally, when working towards a goal, we will capitalize on our strengths by dividing and distributing tasks (kanban), to make sure everyone is working efficiently and effectively.
 
 ## Rules
 - **Meetings:** We will meet in person. Meetings will regularly take place in 
