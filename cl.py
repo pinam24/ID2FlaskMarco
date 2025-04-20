@@ -2,8 +2,8 @@
 The eventual location for the command line interface (CLI) for the project.
 This will be the entry point for the project when run from the command line.
 '''
-from search import search_title, search_author, search_genre
-from most_banned import most_banned_districts, most_banned_authors, most_banned_states, most_banned_titles
+from ProductionCode.search import search_title, search_author, search_genre
+from ProductionCode.most_banned import most_banned_districts, most_banned_authors, most_banned_states, most_banned_titles
 import sys
 import argparse
 
@@ -74,19 +74,34 @@ def main():
                         metavar="LIMIT")
     args = parser.parse_args()
     if args.search_title:
-        search_title(args.search_title)
+        search_results = search_title(args.search_title)
+        for result in search_results:
+            print(result)
     elif args.search_author:
-        search_author(args.search_author)
+        search_results = search_author(args.search_author)
+        for result in search_results:
+            print(result)
     elif args.search_genre:
-        search_genre(args.search_genre)
+        search_results = search_genre(args.search_genre)
+        for result in search_results:
+            print(result)
     elif args.most_banned_districts:
-        most_banned_districts(args.most_banned_districts)
+        search_results = most_banned_districts(args.most_banned_districts)
+        for result in search_results:
+            print(result)
     elif args.most_banned_authors:
-        most_banned_authors(args.most_banned_authors)
+        search_results = most_banned_authors(args.most_banned_authors)
+        for result in search_results:
+            print(result)
     elif args.most_banned_states:
-        most_banned_states(args.state_limit)
+        search_results = most_banned_states(args.state_limit)
+        for result in search_results:
+            print(result)
     elif args.most_banned_titles:
-        most_banned_titles(args.most_banned_titles)
+        search_results = most_banned_titles(args.most_banned_titles)
+        for result in search_results:
+            print(result)
+    # If no arguments are provided, print the help message
     else:
         parser.print_help()
         sys.exit(1)
