@@ -98,7 +98,7 @@ def main():
         for result in search_results:
             print(result)
     elif args.most_banned_states:
-        search_results = most_banned_states(args.state_limit)
+        search_results = most_banned_states(args.most_banned_states)
         for result in search_results:
             print(result)
     elif args.most_banned_titles:
