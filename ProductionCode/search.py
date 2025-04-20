@@ -39,7 +39,8 @@ def query_data(data, key, value, partial=False):
     for entry in data:
         # for fields that are lists, match if any value is the same
         if type(entry[key]) is list:
-            if any(fuzzy_match(item, value, partial) for item in entry[key]):
+            # don't crash if list is empty
+            if len(entry[key]) > 0 and any(fuzzy_match(item, value, partial) for item in entry[key]):
                 matches.append(entry)
         # for fields that are strings, just match the string
         elif type(entry[key] is str):
