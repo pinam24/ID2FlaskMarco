@@ -2,10 +2,14 @@
 The eventual location for the command line interface (CLI) for the project.
 This will be the entry point for the project when run from the command line.
 '''
-from ProductionCode.search import search_title, search_author, search_genre
-from ProductionCode.most_banned import most_banned_districts, most_banned_authors, most_banned_states, most_banned_titles
 import sys
 import argparse
+from ProductionCode.search import search_title, search_author, search_genre
+from ProductionCode.most_banned import (
+    most_banned_districts, 
+    most_banned_authors, 
+    most_banned_states, 
+    most_banned_titles)
 
 
 def main():
@@ -105,7 +109,6 @@ def main():
     else:
         parser.print_help()
         sys.exit(1)
-
 if __name__ == "__main__":
     main()
     
