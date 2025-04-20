@@ -1,8 +1,11 @@
 from ProductionCode.data import goodreads_data
 
 def print_book_short(book):
-    # pretty prints basic book info
-    # looks like "title by author, author, author (ISBN: isbn)"
+    """Pretty prints basic book info (title, author/s, isbn).
+    Arguments:
+    book - the book to print from.
+    Returns: string formatted with the short book info.
+    """
     output = book["title"] + " by "
     output += ", ".join(book["authors"])
     if book["isbn"] != None:
@@ -12,28 +15,40 @@ def print_book_short(book):
     return output
 
 def fuzzy_match(data, query, partial):
-    # match case-insensitive and without whitespace
-    # option for if it should be a partial match
+    """Matches two strings regardless of case or whitespace.
+    Arguments:
+    data - the string from the database
+    query - the query to match it against
+    partial: whether a partial match is ok
+    Returns: boolean"""
     if partial:
         return query.lower().strip() in data.lower().strip()
     else:
         return query.lower().strip() == data.lower().strip()
 
-def query_data(data, key, value, partial_match=False):
-    # create list to add objects to
+def query_data(data, key, value, partial=False):
+    """Queries key from the data for matching a specific value.
+    Arguments:
+    data - the data to search
+    key - the field to compare
+    value - the query of the user
+    partial - whether a partial match is ok (default false)
+    Returns: list of objects that match the query
+    """
     matches = []
     for entry in data:
         # for fields that are lists, match if any value is the same
         if type(entry[key]) is list:
-            if any(fuzzy_match(item, value, partial_match) for item in entry[key]):
+            if any(fuzzy_match(item, value, partial) for item in entry[key]):
                 matches.append(entry)
         # for fields that are strings, just match the string
         elif type(entry[key] is str):
-            if fuzzy_match(entry[key], value, partial_match):
+            if fuzzy_match(entry[key], value, partial):
                 matches.append(entry)
     return matches
 
 def search_title(title):
+    """High level title search, to be called by the CLI."""
     # allow titles to partially match (ie "Harry Potter" matches "Harry Potter and the...")
     entries = query_data(goodreads_data, "title", title, True)
     # for this query, only print short info
@@ -41,18 +56,21 @@ def search_title(title):
     return entries
 
 def search_author(author):
+    """High level author search, to be called by the CLI."""
     entries = query_data(goodreads_data, "authors", author)
     # for this query, only print short info
     entries = map(print_book_short, entries)
     return entries
 
 def search_genre(genre):
+    """High level genre search, to be called by the CLI."""
     entries = query_data(goodreads_data, "genres", genre)
     # for this query, only print short info
     entries = map(print_book_short, entries)
     return entries
 
 def main():
+    """Main function for informal testing."""
     search_results = search_title("kingdom of the")
     for result in search_results:
         print(result)
