@@ -6,21 +6,21 @@ def print_item(item):
     return output
 
 
-def most_banned_districts(limit):
+def most_banned_districts(limit: int):
     most_banned_districts = count_bans(bookban_data, "district")
-    most_banned_districts[0:limit]
+    most_banned_districts = most_banned_districts[0:limit]
     return map(print_item, most_banned_districts)
 
 
-def most_banned_states(limit):
+def most_banned_states(limit: int):
     most_banned_states = count_bans(bookban_data, "state")
-    most_banned_states[0:limit]
+    most_banned_states = most_banned_states[0:limit]
     return map(print_item, most_banned_states)
 
 
-def most_banned_authors(limit):
+def most_banned_authors(limit: int):
     most_banned_authors = count_bans(bookban_data, "author")
-    most_banned_authors[0:limit]
+    most_banned_authors = most_banned_authors[0:limit]
     return map(print_item, most_banned_authors)
 
 
