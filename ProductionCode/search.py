@@ -37,10 +37,12 @@ def query_data(data, key, value, partial=False):
     """
     matches = []
     for entry in data:
+        # if field is null, skip it
+        if entry[key] == None:
+            continue
         # for fields that are lists, match if any value is the same
-        if type(entry[key]) is list:
-            # don't crash if list is empty
-            if len(entry[key]) > 0 and any(fuzzy_match(item, value, partial) for item in entry[key]):
+        elif type(entry[key]) is list:
+            if any(fuzzy_match(item, value, partial) for item in entry[key]):
                 matches.append(entry)
         # for fields that are strings, just match the string
         elif type(entry[key] is str):
